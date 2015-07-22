@@ -378,7 +378,7 @@ function parse (pattern, isSub) {
           start: i - 1,
           reStart: re.length
         })
-        // negation is (?:(?!js)[^/]*)
+        // negation is (?:(?!(?:js))[^/]*)
         re += stateChar === '!' ? '(?:(?!(?:' : '(?:'
         this.debug('plType %j %j', stateChar, re)
         stateChar = false
@@ -395,7 +395,7 @@ function parse (pattern, isSub) {
         re += ')'
         var pl = patternListStack.pop()
         plType = pl.type
-        // negation is (?:(?!js)[^/]*)
+        // negation is (?:(?!(?:js))[^/]*)
         // The others are (?:<pattern>)<type>
         switch (plType) {
           case '!':

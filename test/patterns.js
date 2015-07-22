@@ -259,7 +259,15 @@ module.exports = [
   'https://github.com/isaacs/minimatch/issues/59',
   ['[z-a]', []],
   ['a/[2015-03-10T00:23:08.647Z]/z', []],
-  ['[a-0][a-\u0100]', []]
+  ['[a-0][a-\u0100]', []],
+
+  'v2.0.8 -> v2.0.9 regression',
+  [
+    '*(*.json|!(*.js))',
+    ['testjson.json', 'other.bar'],
+    {},
+    ['testjson.json', 'foojs.js', 'other.bar']
+  ]
 ]
 
 module.exports.regexps = [
@@ -358,7 +366,8 @@ module.exports.regexps = [
   '/^(?:(?:(?!(?:\\/|^)\\.).)*?\\/\\.x\\/(?:(?!(?:\\/|^)\\.).)*?)$/',
   '/^(?:\\[z\\-a\\])$/',
   '/^(?:a\\/\\[2015\\-03\\-10T00:23:08\\.647Z\\]\\/z)$/',
-  '/^(?:(?=.)\\[a-0\\][a-Ā])$/'
+  '/^(?:(?=.)\\[a-0\\][a-Ā])$/',
+  '/^(?:(?!\\.)(?=.)(?:[^\\/]*?\\.json|(?:(?![^\\/]*?\\.js)[^\\/]*?))*)$/'
 ]
 
 Object.defineProperty(module.exports, 'files', {
